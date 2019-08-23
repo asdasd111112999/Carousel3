@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background:#F2F2F2;
+}
+.images {
+    height: 200px;
+    display: flex;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 5 5 5px black;
+}
+.window {
+    width: 300px;
+    overflow: hidden;
+    text-align: center;
+    margin: 20vh auto;
+    box-shadow: 0 0 3px #AAAAAA;
+}   
+li{
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: -2px;
+    width: 60px;
+    height: 30px;
+    background-color:  rgba(77, 76, 76, 0.363);
+    border-top:1px solid transparent 
+}
+a{  
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: linear 0.5s
+}
+li.active,li.active>a{
+    cursor:default;
+}
+li:nth-of-type(1).active>a{
+    background-color: black;
+}
+li:nth-of-type(2).active>a{
+    background-color: #F96F41;
+}
+li:nth-of-type(3).active>a{
+    background-color: #AB80F3;
+}
+li:nth-of-type(4).active>a{
+    background-color: #4268D3;
+
+
+

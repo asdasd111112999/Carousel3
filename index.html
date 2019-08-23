@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>carousel3</title>
+</head>
+
+<body>
+    <div class='window'>
+        <div class="images" id='images'>
+            <img src="./1.png" alt="">
+            <img src="./2.png" alt="">
+            <img src="./3.png" alt="">
+            <img src="./4.png" alt="">
+        </div>
+        <div id="bottoms">
+            <ul>
+                <li class="active"><a href="javascript:void(0)"></a></li>
+                <li><a href="javascript:void(0)"></a></li>
+                <li><a href="javascript:void(0)"></a></li>
+                <li><a href="javascript:void(0)"></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var $li = $('#bottoms li');
+    var $images = $('#images > img');
+    var n = 0;
+    for (let i = 0; i < $li.length; i++) {
+        $($li[i]).on('click', x => {
+            n = $(x.currentTarget).index();
+            $($li[i]).addClass('active');
+            $('#images').css({ transform: 'translateX(' + ((($(x.currentTarget).index())) * -300) + 'px)' })
+            bottom_active($($li[i]));
+        })
+    }
+    var timerId = set_time()
+    $('.window').on('mouseenter', function () {
+        window.clearInterval(timerId)
+    })
+    $('.window').on('mouseleave', function () {
+        timerId = set_time()
+    })
+    /*-----以下是工具函数-----*/
+    function bottom_active(bottom) {
+        bottom.addClass('active').siblings().removeClass('active')
+    }
+    function set_time() {
+        return setInterval(() => {
+            n < $li.length - 1 ? n++ : n = 0
+            bottom_active($($li[n]).trigger('click'));
+        }, 3000);
+    }
+</script>
+
+</html>
